@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.prakyath.pocketcollege.Syllabus" >
+
+
+    <item
+        android:id="@+id/homeback"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Notification"
+        android:showAsAction="ifRoom"
+    >
+
+    </item>
+
+
+    
+
+</menu>
