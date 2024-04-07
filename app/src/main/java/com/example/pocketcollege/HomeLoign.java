@@ -16,6 +16,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import androidx.appcompat.widget.Toolbar;
@@ -53,9 +54,17 @@ public class HomeLoign extends FragmentActivity  {
                 // TODO Auto-generated method stub
               /*  Intent intent = new Intent(HomeLoign.this, Welcome_Screen.class);
                 startActivity(intent);*/
+				Toast.makeText(HomeLoign.this, "We are working on ", Toast.LENGTH_SHORT).show();
             }
 
 		});
+		parentlogin.setOnClickListener(new View.OnClickListener() {
+			@Override
+            public void onClick(View v) {
+                Toast.makeText(HomeLoign.this, "we are working on", Toast.LENGTH_LONG).show();
+            }
+		});
+
 
 	}
 
