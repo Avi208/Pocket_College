@@ -27,6 +27,12 @@
             android:name=".HomeLoign"
             android:exported="true"/>
         <activity
+            android:name=".TeacherLogin"
+            android:exported="true"/>
+        <activity
+            android:name=".Parent_Welcome_Screen"
+            android:exported="true"/>
+        <activity
             android:name=".Splash"
             android:exported="true">
             <intent-filter>

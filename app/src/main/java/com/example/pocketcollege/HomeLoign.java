@@ -24,7 +24,7 @@ import androidx.fragment.app.FragmentActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeLoign extends FragmentActivity implements OnClickListener {
+public class HomeLoign extends FragmentActivity  {
 	
 	Button studentlogin, parentlogin,LecturerLogin;
 	private Toolbar mToolbar;
@@ -40,18 +40,24 @@ public class HomeLoign extends FragmentActivity implements OnClickListener {
 		studentlogin = (Button) findViewById(R.id.studentslogin);
 		parentlogin = (Button) findViewById(R.id.parentslogin);
 		LecturerLogin = (Button) findViewById(R.id.LecturerLogin);
+		LecturerLogin.setOnClickListener(new View.OnClickListener() {
+			@Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
+                startActivity(intent);
+            }
+		});studentlogin.setOnClickListener(new View.OnClickListener() {
+			@Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+              /*  Intent intent = new Intent(HomeLoign.this, Welcome_Screen.class);
+                startActivity(intent);*/
+            }
 
-		studentlogin.setOnClickListener(this);
-		parentlogin.setOnClickListener(this);
-		LecturerLogin.setOnClickListener(this);
+		});
 
-		// Spinner click listener
 	}
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

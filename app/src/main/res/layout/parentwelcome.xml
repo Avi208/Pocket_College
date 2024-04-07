@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/welcomrheading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15sp"
+        android:background="?attr/colorPrimaryDark"
+        >
+
+        <TextView
+            android:id="@+id/welcomee"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="WELCOME"
+            android:textColor="#ffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ScrollView
+          android:id="@+id/mainScrollView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="bottom"
+         
+          android:scrollbars="none" >
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/view_departmant"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/viewtimetable"
+                android:orientation="horizontal" >
+            </Button>
+
+            <Button
+                android:id="@+id/view_marks"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/view_departmant"
+                android:background="@drawable/ia_marks"
+                android:orientation="horizontal" >
+            </Button>
+
+            <Button
+                android:id="@+id/view_attendance_report"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/view_departmant"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/viewattendance"
+                android:orientation="horizontal" >
+            </Button>
+
+            <Button
+                android:id="@+id/events"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/view_attendance_report"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/events"
+                android:orientation="horizontal" >
+            </Button>           
+
+            <Button
+                android:id="@+id/feedetails"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/view_marks"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/feedetailsnew"
+                android:orientation="horizontal" >
+            </Button>
+
+            <Button
+                android:id="@+id/personal_details"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/feedetails"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="115dp"
+                android:background="@drawable/personaldetails"
+                android:orientation="horizontal" >
+            </Button>
+
+            <Button
+                android:id="@+id/teacherdetails"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/events"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/teacher_details"
+                android:orientation="horizontal" >
+            </Button>           
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>
