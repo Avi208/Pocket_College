@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".GlobalVariables"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,27 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketCollege"
-        tools:targetApi="31"
-        android:name=".GlobalVariables">
+        tools:targetApi="31">
+        <activity
+            android:name=".MyStudentProfile"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".Welcome_Screen"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".HomeLoign"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".TeacherLogin"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Parent_Welcome_Screen"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Splash"
             android:exported="true">

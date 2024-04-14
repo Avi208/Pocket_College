@@ -52,9 +52,9 @@ public class HomeLoign extends FragmentActivity  {
 			@Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-              /*  Intent intent = new Intent(HomeLoign.this, Welcome_Screen.class);
-                startActivity(intent);*/
-				Toast.makeText(HomeLoign.this, "We are working on ", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
+                startActivity(intent);
+
             }
 
 		});
