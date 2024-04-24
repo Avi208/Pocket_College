@@ -40,6 +40,7 @@
              android:layout_weight="1"
              android:src="@drawable/personaldetails" />
          <ImageView
+             android:id="@+id/internals_marks"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="1"
@@ -53,25 +54,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
+
         android:orientation="horizontal"
         android:layout_margin="20dp"
         >
         <ImageView
+            android:id="@+id/noticboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/noticeboard" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/personaldetails" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/personaldetails" />
+
     </LinearLayout>
     </LinearLayout>
     

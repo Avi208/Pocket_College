@@ -48,7 +48,8 @@ public class HomeLoign extends FragmentActivity  {
                 Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
                 startActivity(intent);
             }
-		});studentlogin.setOnClickListener(new View.OnClickListener() {
+		});
+		studentlogin.setOnClickListener(new View.OnClickListener() {
 			@Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub

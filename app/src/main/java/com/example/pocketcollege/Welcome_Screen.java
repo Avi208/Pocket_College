@@ -27,10 +27,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 
-public class Welcome_Screen extends Activity {
+public class Welcome_Screen extends Activity {	
 	
 
 	private ImageView personDetails;
+	private ImageView iaMarks;
+	private ImageView noticeBoard;
+
 	public Welcome_Screen(){
 
 	}
@@ -49,6 +52,8 @@ public class Welcome_Screen extends Activity {
 		//welcomeMessage.setText("Welcome " +" To "+ newObj.getUserName());
 		welcomeMessage.setText("Welcome " +" To Aviansh Raj ");
 		personDetails = (ImageView) findViewById(R.id.personaldetails);
+		iaMarks = (ImageView) findViewById(R.id.internals_marks);
+		noticeBoard = (ImageView) findViewById(R.id.noticboard);
 		personDetails.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -56,6 +61,22 @@ public class Welcome_Screen extends Activity {
                 Intent intent = new Intent(Welcome_Screen.this, MyStudentProfile.class);
                 startActivity(intent);
 			}
+		});
+		iaMarks.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				// TODO Auto-generated method stub
+                Intent intent = new Intent(Welcome_Screen.this, InternalMarks.class);
+                startActivity(intent);
+			}
+		});
+		noticeBoard.setOnClickListener(new OnClickListener() {
+			@Override
+            public void onClick(View view) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(Welcome_Screen.this, View_notice.class);
+                startActivity(intent);
+            }
 		});
 	}
 	@Override

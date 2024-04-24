@@ -24,9 +24,9 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/profile_new"
                 android:layout_margin="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,13 +67,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Parent_Mail_ID"
+                android:text="Name"
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="parentboth84@gmail.com"
+                android:text="Aviansh Raj"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="#323643"/>
@@ -94,13 +94,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Parent_Mail_ID"
+                android:text="Student regester No"
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="parentboth84@gmail.com"
+                android:text="1aw12MCA52"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="#323643"/>
