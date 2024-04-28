@@ -52,16 +52,9 @@ public class MyStudentProfile extends AppCompatActivity {
         blood_group = (TextView) findViewById(R.id.blood_group);
         address = (TextView) findViewById(R.id.address);
 
-        // create a method that returns a list of student for this textview
-       List<String> listStudent= getStudentList();
+
 
     }
 
-    private List<String> getStudentList() {
-        // create dummy list of students for this textview
-        List<String> listStudent = new ArrayList<>();
-        listStudent.add("
 
-        return null;
-    }
 }
