@@ -62,8 +62,8 @@ public class HomeLoign extends FragmentActivity  {
 		parentlogin.setOnClickListener(new View.OnClickListener() {
 			@Override
             public void onClick(View v) {
-                Toast.makeText(HomeLoign.this, "we are working on", Toast.LENGTH_LONG).show();
-            }
+				Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
+				startActivity(intent);            }
 		});
 
 

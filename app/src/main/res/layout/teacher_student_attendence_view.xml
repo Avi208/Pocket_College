@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+     >
+    <include android:id="@+id/internals"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/actionbar_faculty_attendence_view"/>
+   <RelativeLayout
+       android:id="@+id/mailrelative"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+           android:layout_below="@+id/internals">
+
+       <Spinner android:id="@+id/subject"
+           android:paddingLeft="10.0dip"
+           android:paddingRight="10.0dip"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5.0dip"
+           android:layout_marginTop="10.0dip"
+           android:layout_marginRight="5.0dip"
+           android:layout_marginBottom="15.0dip"
+          />
+       <EditText
+           android:id="@+id/showdate"
+           android:layout_width="fill_parent"
+           android:layout_height="50dp"
+           android:paddingLeft="10.0dip"
+           android:paddingRight="10.0dip"
+           android:layout_marginLeft="5.0dip"
+           android:layout_marginTop="10.0dip"
+           android:layout_marginRight="5.0dip"
+           android:layout_marginBottom="15.0dip"
+           android:layout_below="@+id/subject"/>
+
+       <Spinner android:id="@+id/period"
+           android:paddingLeft="10.0dip"
+           android:paddingRight="10.0dip"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5.0dip"
+           android:layout_marginTop="10.0dip"
+           android:layout_marginRight="5.0dip"
+           android:visibility="gone"
+           android:layout_marginBottom="15.0dip"
+           android:layout_below="@+id/subject"/>
+
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:id="@+id/lable"
+        android:layout_below="@+id/mailrelative"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/namelable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Name"
+            android:textSize="15dp"
+            android:paddingLeft="10dp"
+
+            />
+        <TextView
+            android:id="@+id/lab_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="15dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_toRightOf="@+id/namelable"
+
+            />
+
+        <TextView
+            android:id="@+id/lab_obtain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="15dp"
+            android:paddingLeft="40dp"
+            android:layout_toRightOf="@+id/lab_max"
+
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/listvir"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/lable"
+        android:layout_marginTop="5dp">
+        <ListView
+            android:id="@+id/liststudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:dividerHeight="5dp"
+            android:padding="2dp"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical">
+        </ListView>
+    </RelativeLayout>
+</RelativeLayout>

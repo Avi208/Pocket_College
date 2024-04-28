@@ -33,6 +33,7 @@ public class Welcome_Screen extends Activity {
 	private ImageView personDetails;
 	private ImageView iaMarks;
 	private ImageView noticeBoard;
+	private ImageView attendence;
 
 	public Welcome_Screen(){
 
@@ -54,6 +55,7 @@ public class Welcome_Screen extends Activity {
 		personDetails = (ImageView) findViewById(R.id.personaldetails);
 		iaMarks = (ImageView) findViewById(R.id.internals_marks);
 		noticeBoard = (ImageView) findViewById(R.id.noticboard);
+		attendence = (ImageView) findViewById(R.id.attendees);
 		personDetails.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -78,7 +80,18 @@ public class Welcome_Screen extends Activity {
                 startActivity(intent);
             }
 		});
+		attendence.setOnClickListener(new OnClickListener() {
+			@Override
+            public void onClick(View view) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(Welcome_Screen.this, Student_View_attendance.class);
+                startActivity(intent);
+            }
+		});
 	}
+
+
+
 	@Override
 	public void onResume() {
 		super.onResume();

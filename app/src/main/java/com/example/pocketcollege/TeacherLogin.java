@@ -62,14 +62,20 @@ public class TeacherLogin extends Activity {
 				String username = usr_number.getText().toString();
 				String password = password_main.getText().toString();
 				String[] Loginvalues = { "admin", "admin" };
-				if (username.trim().equals("admin") && password.trim().equals("admin"))
-				{
-					startActivity(new Intent(TeacherLogin.this, Parent_Welcome_Screen.class));
-
-				}
-				else if (username.trim().equals("student") && password.trim().equals("student")){
+				if (username.trim().equals("student") && password.trim().equals("student")) {
 
 					startActivity(new Intent(TeacherLogin.this, Welcome_Screen.class));
+
+				}
+				if (username.trim().equals("faculty") && password.trim().equals("faculty")) {
+
+					startActivity(new Intent(TeacherLogin.this, Welcome_Screen.class));
+
+				}
+				else if (username.trim().equals("admin") && password.trim().equals("admin"))
+				{
+					startActivity(new Intent(TeacherLogin.this, Faculty_Welcome_Screen.class));
+
 				}
 				{
 					Toast.makeText(TeacherLogin.this, "UserID and Password requested", Toast.LENGTH_SHORT).show();

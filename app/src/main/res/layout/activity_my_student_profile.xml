@@ -26,18 +26,20 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/profile_new"
+                android:src="@drawable/clg_boy"
                 android:layout_margin="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/header_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Akshay Syal"
+                    android:text="Avinash Raj"
                     android:textSize="25dp"/>
                 <TextView
+                    android:id="@+id/header_regester_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Class_XI-B_Roll_no:_04"
@@ -71,6 +73,7 @@
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
+                android:id="@+id/strudent_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Aviansh Raj"
@@ -98,6 +101,7 @@
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
+                android:id="@+id/student_regester"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="1aw12MCA52"
@@ -121,13 +125,70 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Parent_Mail_ID"
+                android:text="Student Mobile Number"
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
+                android:id="@+id/student_mobile_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="parentboth84@gmail.com"
+                android:text="7204585776"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#323643"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Father Name"
+                android:textSize="12dp"
+                android:textColor="#A5A5A5"/>
+            <TextView
+               android:id="@+id/student_father_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Raju Kumar M P"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#323643"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mother Name"
+                android:textSize="12dp"
+                android:textColor="#A5A5A5"/>
+            <TextView
+                android:id="@+id/student_mother_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Manasa"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="#323643"/>
@@ -152,60 +213,7 @@
                 android:textSize="12dp"
                 android:textColor="#A5A5A5"/>
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="parentboth84@gmail.com"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#323643"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Parent_Mail_ID"
-                android:textSize="12dp"
-                android:textColor="#A5A5A5"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="parentboth84@gmail.com"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#323643"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Parent_Mail_ID"
-                android:textSize="12dp"
-                android:textColor="#A5A5A5"/>
-            <TextView
+                android:id="@+id/student_parent_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="parentboth84@gmail.com"
@@ -229,13 +237,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Parent_Mail_ID"
+                    android:text="Branch Name: "
                     android:textSize="12dp"
                     android:textColor="#A5A5A5"/>
                 <TextView
+                    android:id="@+id/student_branch_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="parentboth84@gmail.com"
+                    android:text="Bachelor of computer applications"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#323643"/>
@@ -256,13 +265,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Parent_Mail_ID"
+                    android:text="Blood group"
                     android:textSize="12dp"
                     android:textColor="#A5A5A5"/>
                 <TextView
+                    android:id="@+id/blood_group"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="parentboth84@gmail.com"
+                    android:text="A+"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#323643"/>
@@ -283,13 +293,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Parent_Mail_ID"
+                    android:text="Address: "
                     android:textSize="12dp"
                     android:textColor="#A5A5A5"/>
                 <TextView
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="parentboth84@gmail.com"
+                    android:text="Kalyana Nagar bangalore"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#323643"/>

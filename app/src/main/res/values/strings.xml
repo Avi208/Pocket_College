@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Pocket College</string>
     <string name="action_search">Search\n</string>
+    <string name="MAIL_BODY">Hi [Parents\' Names],\n\nJust wanted to give a quick update on [Son/Daughter\'s Name]. They\'re doing great in school and [mention a specific positive point: e.g., excelling in Math, participating actively in class].\n\nWe\'ll chat more at the next parent-teacher conference!</string>
 </resources>
