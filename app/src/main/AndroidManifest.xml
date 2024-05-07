@@ -71,6 +71,9 @@
             android:name=".Faculty_Welcome_Screen"
             android:exported="true" />
         <activity
+            android:name=".StudentLogin"
+            android:exported="true" />
+        <activity
             android:name=".Splash"
             android:exported="true">
             <intent-filter>

@@ -1,20 +1,10 @@
 package com.example.pocketcollege;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 
-public class TeacherLogin extends FragmentActivity {
+public class StudentLogin extends FragmentActivity {
 
 	Button submit_login;
 	private static TextView validateUser;
@@ -44,7 +34,7 @@ public class TeacherLogin extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		setContentView(R.layout.teacherlogin);
+		setContentView(R.layout.studentlogin);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			Window window = getWindow();
 			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -68,25 +58,27 @@ public class TeacherLogin extends FragmentActivity {
 				EditText password_main = (EditText) findViewById(R.id.user_pass);
 				String username = usr_number.getText().toString();
 				String password = password_main.getText().toString();
-				String getSharedPreferencesUsername = sharedPreferences.getString("t_username", "");
-				String getSharedPreferencesPassword = sharedPreferences.getString("t_password", "");
-				 if (username.trim().equals(getSharedPreferencesUsername) && password.trim().equals(getSharedPreferencesPassword))
-				{
-					startActivity(new Intent(TeacherLogin.this, Faculty_Welcome_Screen.class));
+				String[] Loginvalues = { "admin", "admin" };
+				if (username.trim().equals("student") && password.trim().equals("student")) {
 
-				}else if (getSharedPreferencesUsername.isEmpty() && getSharedPreferencesPassword.isEmpty()){
-					 Toast.makeText(TeacherLogin.this, "Login Failed Please Create new Credentials.", Toast.LENGTH_SHORT).show();
-				 }
+					startActivity(new Intent(StudentLogin.this, Welcome_Screen.class));
+
+				}
+				if (username.trim().equals("faculty") && password.trim().equals("faculty")) {
+
+					startActivity(new Intent(StudentLogin.this, Welcome_Screen.class));
+
+				}
 				{
-					Toast.makeText(TeacherLogin.this, "UserID and Password Invalid", Toast.LENGTH_SHORT).show();
+					Toast.makeText(StudentLogin.this, "UserID and Password requested", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
 		forgotPassword.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				UpdateCredentialsBottomSheetDialog dialog = new UpdateCredentialsBottomSheetDialog(context, sharedPreferences
-				, "TEACHER_LOGIN");
+				UpdateCredentialsBottomSheetDialog dialog = new UpdateCredentialsBottomSheetDialog(context, sharedPreferences,
+						"STUDENT_PARENT_LOGIN");
 				dialog.show(getSupportFragmentManager(), "update_credentials_dialog");
 			}
 		});

@@ -53,7 +53,7 @@ public class HomeLoign extends FragmentActivity  {
 			@Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
+                Intent intent = new Intent(HomeLoign.this, StudentLogin.class);
                 startActivity(intent);
 
             }
@@ -62,7 +62,7 @@ public class HomeLoign extends FragmentActivity  {
 		parentlogin.setOnClickListener(new View.OnClickListener() {
 			@Override
             public void onClick(View v) {
-				Intent intent = new Intent(HomeLoign.this, TeacherLogin.class);
+				Intent intent = new Intent(HomeLoign.this, StudentLogin.class);
 				startActivity(intent);            }
 		});
 
