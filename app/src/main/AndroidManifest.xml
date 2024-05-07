@@ -19,6 +19,7 @@
         </intent>
     </queries>
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:name=".GlobalVariables"
         android:allowBackup="true"
@@ -31,11 +32,14 @@
         android:theme="@style/Theme.PocketCollege"
         tools:targetApi="31">
         <activity
+            android:name=".NoticeValidator"
+            android:exported="false" />
+        <activity
             android:name=".AllStudentListActivity"
             android:exported="true" />
         <activity
             android:name=".MailToParents"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MyStudentProfile"
             android:exported="false" />

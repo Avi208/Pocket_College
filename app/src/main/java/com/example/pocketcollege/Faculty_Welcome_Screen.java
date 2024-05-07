@@ -18,6 +18,7 @@ public class Faculty_Welcome_Screen extends Activity {
 	private ImageView noticeBoard;
 	private ImageView attendence;
 	private ImageView sendEmail;
+	private ImageView addNoticeBard;
 
 	public Faculty_Welcome_Screen(){
 
@@ -34,6 +35,7 @@ public class Faculty_Welcome_Screen extends Activity {
 		 sendEmail = (ImageView) findViewById(R.id.sendemail);
 		 personDetails = (ImageView) findViewById(R.id.personaldetails);
 		 noticeBoard = (ImageView) findViewById(R.id.noticboard);
+		 addNoticeBard = (ImageView) findViewById(R.id.add_noticboard);
 
 
 		GlobalVariables newObj = (GlobalVariables) this.getApplication();
@@ -63,6 +65,14 @@ public class Faculty_Welcome_Screen extends Activity {
                 Intent intent = new Intent(Faculty_Welcome_Screen.this, View_notice.class);
                 startActivity(intent);
             }
+		});
+		addNoticeBard.setOnClickListener(new OnClickListener() {
+				@Override
+                public void onClick(View view) {
+                    // TODO Auto-generated method stub
+                    Intent intent = new Intent(Faculty_Welcome_Screen.this, NoticeValidator.class);
+                    startActivity(intent);
+                }
 		});
 
 	}

@@ -72,6 +72,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/noticeboard" />
+        <ImageView
+            android:id="@+id/add_noticboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/add_subject" />
 
     </LinearLayout>
     </LinearLayout>

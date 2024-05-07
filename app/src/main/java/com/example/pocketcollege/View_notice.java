@@ -2,6 +2,7 @@ package com.example.pocketcollege;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -20,6 +21,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -38,14 +40,13 @@ public class View_notice extends Activity {
 	//String mainMenu[] = {"Time Table", "IA Marks", "Attendance"};
 	private Toolbar mToolbar;
 	final Context context = this;
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
 
-	{
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_notice);
-		mToolbar= (Toolbar) findViewById(R.id.notiaction);
+		mToolbar = (Toolbar) findViewById(R.id.notiaction);
 		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -57,7 +58,7 @@ public class View_notice extends Activity {
 		GlobalVariables newObj = (GlobalVariables) getApplication();
 		String userId = newObj.getUserId();
 		String token = newObj.getUserToken();
-		String[] LoginVal = { userId, token };
+		String[] LoginVal = {userId, token};
 
 		new GetNotice().execute(LoginVal);
 
@@ -99,8 +100,8 @@ public class View_notice extends Activity {
 				period = notice_arr.getJSONObject(i);
 				title[i] = period.getString("title");
 				content[i] = period.getString("content");
-				pathDOC[i]=period.getString("path");
-				content[i].replaceAll("\\<[^>]*>","");
+				pathDOC[i] = period.getString("path");
+				content[i].replaceAll("\\<[^>]*>", "");
 				//brief[i] = period.getString("brief");
 				issued_on[i] = period.getString("issued_on");
 				owner[i] = period.getString("owner");
@@ -152,7 +153,7 @@ public class View_notice extends Activity {
 								.setOnClickListener(new View.OnClickListener() {
 									@Override
 									public void onClick(View v) {
-									//	Toast.makeText(getApplicationContext(),"inside",Toast.LENGTH_LONG ).show();
+										//	Toast.makeText(getApplicationContext(),"inside",Toast.LENGTH_LONG ).show();
 										WebView webview = (WebView) dialog.findViewById(R.id.viewdoc);
 										String myPdfUrl = pathDOC[j];
 										String url = "http://docs.google.com/gview?embedded=true&url=" + myPdfUrl;
@@ -209,8 +210,7 @@ public class View_notice extends Activity {
 
 				ll.addView(LL, i);
 
-			}
-			catch (JSONException e) {
+			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -219,12 +219,11 @@ public class View_notice extends Activity {
 
 	}
 
-	public class GetNotice extends AsyncTask<String, Integer, JSONObject>
-
-	{
+	public class GetNotice extends AsyncTask<String, Integer, JSONObject> {
 		JSONObject json = null;
 
 		ProgressDialog progressDialog = new ProgressDialog(context);
+
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
@@ -240,8 +239,12 @@ public class View_notice extends Activity {
 			//		System.out.println("Inside do_backgrnd");
 
 
+            NoticeDatabase database = NoticeDatabase.getDatabase(context);
+
+            NoticeDao noticeDao1 = database.noticeDao();
+            List<Notice> noticeList = noticeDao1.getAllNotices();
             try {
-                json = getNotice();
+                json = convertNoticeListToJson(noticeList);// getNotice();
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
@@ -249,18 +252,14 @@ public class View_notice extends Activity {
 		}
 
 		@Override
-		protected void onPostExecute(JSONObject result)
-		{
+		protected void onPostExecute(JSONObject result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			progressDialog.dismiss();
-			if (result == null)
-			{
+			if (result == null) {
 				GlobalVariables newObj = (GlobalVariables) getApplication();
 				newObj.alertDialog(context);
-			}
-			else
-			{
+			} else {
 
 				try {
 					String status = result.getString("status");
@@ -290,52 +289,74 @@ public class View_notice extends Activity {
 
 		public JSONObject getNotice() throws JSONException {
 
-				String data = "{\n" +
-						"    \"status\": \"ok\",\n" +
-						"    \"response\": \"Fetched Notice\",\n" +
-						"    \"notice\": [\n" +
-						"        {\n" +
-						"            \"title\": \"Prepare Late Comers List.\",\n" +
-						"            \"content\": \"Madhu,rrrSend the Late Comers List of Boys and Girls Who stays in Hostel Block Wise. The Management is taking the Disciplinary action who ever coming the Hostel late in the night . All the Students should be present in side the Hostel Before 9:15 Pm all the Days. \",\n" +
-						"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
-						"            \"issued_on\": \"07/29/2016\",\n" +
-						"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
-						"        },\n" +
-						"        {\n" +
-						"            \"title\": \"List of Students Details.\",\n" +
-						"            \"content\": \"Rajgopal,rrrSend the Boys and Girls Details of each Hostel in the Campus.rrrrYours,rrPrincipal.\",\n" +
-						"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
-						"            \"issued_on\": \"07/29/2016\",\n" +
-						"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
-						"        },\n" +
-						"        {\n" +
-						"            \"title\": \"Appointment schedule\",\n" +
-						"            \"content\": \"HI,rrToday i will allow visitors only between 10:30am to 12:30pm. \",\n" +
-						"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
-						"            \"issued_on\": \"07/25/2016\",\n" +
-						"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
-						"        },\n" +
-						"        {\n" +
-						"            \"title\": \"Greetings\",\n" +
-						"            \"content\": \"CONGRATULATIONSManagement, Principal and Staff of PVKKIT congratulates the 23 Students who got selected in the Off campus drive by TECH MAHINDRA on 09-05-2016CONGRATULATIONS14 Students got selected in the Off Campus RECRUITMENT drive conducted by INSPIREDGE IT SOLUTIONS on\",\n" +
-						"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
-						"            \"issued_on\": \"05/31/2016\",\n" +
-						"            \"path\": \"http://www.pocketcollege.in/pvkk/notice/notice13315460_1003230216398072_1577787957195727420_n.jpg\"\n" +
-						"        }\n" +
-						"    ]\n" +
-						"}";
+			String data = "{\n" +
+					"    \"status\": \"ok\",\n" +
+					"    \"response\": \"Fetched Notice\",\n" +
+					"    \"notice\": [\n" +
+					"        {\n" +
+					"            \"title\": \"Prepare Late Comers List.\",\n" +
+					"            \"content\": \"Madhu,rrrSend the Late Comers List of Boys and Girls Who stays in Hostel Block Wise. The Management is taking the Disciplinary action who ever coming the Hostel late in the night . All the Students should be present in side the Hostel Before 9:15 Pm all the Days. \",\n" +
+					"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
+					"            \"issued_on\": \"07/29/2016\",\n" +
+					"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
+					"        },\n" +
+					"        {\n" +
+					"            \"title\": \"List of Students Details.\",\n" +
+					"            \"content\": \"Rajgopal,rrrSend the Boys and Girls Details of each Hostel in the Campus.rrrrYours,rrPrincipal.\",\n" +
+					"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
+					"            \"issued_on\": \"07/29/2016\",\n" +
+					"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
+					"        },\n" +
+					"        {\n" +
+					"            \"title\": \"Appointment schedule\",\n" +
+					"            \"content\": \"HI,rrToday i will allow visitors only between 10:30am to 12:30pm. \",\n" +
+					"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
+					"            \"issued_on\": \"07/25/2016\",\n" +
+					"            \"path\": \"http://www.pocketcollege.in/pvkk/\"\n" +
+					"        },\n" +
+					"        {\n" +
+					"            \"title\": \"Greetings\",\n" +
+					"            \"content\": \"CONGRATULATIONSManagement, Principal and Staff of PVKKIT congratulates the 23 Students who got selected in the Off campus drive by TECH MAHINDRA on 09-05-2016CONGRATULATIONS14 Students got selected in the Off Campus RECRUITMENT drive conducted by INSPIREDGE IT SOLUTIONS on\",\n" +
+					"            \"owner\": \"Dr P.Mallikarjuna Reddy\",\n" +
+					"            \"issued_on\": \"05/31/2016\",\n" +
+					"            \"path\": \"http://www.pocketcollege.in/pvkk/notice/notice13315460_1003230216398072_1577787957195727420_n.jpg\"\n" +
+					"        }\n" +
+					"    ]\n" +
+					"}";
 
-					JSONObject statusValue = new JSONObject(data);
+			JSONObject statusValue = new JSONObject(data);
 
-					System.out.println("******from data base*****"+statusValue);
-					return statusValue;
+			System.out.println("******from data base*****" + statusValue);
+			return statusValue;
 
 
-
-			}
+		}
 
 	}
 
+	public JSONObject convertNoticeListToJson(List<Notice> noticeList) throws JSONException {
+		JSONObject response = new JSONObject();
+		response.put("status", "ok");
+		response.put("response", "Fetched Notice");
+
+		JSONArray noticesArray = new JSONArray();
+		for (Notice notice : noticeList) {
+			JSONObject noticeObj = new JSONObject();
+			noticeObj.put("title", notice.getTitle());
+			noticeObj.put("content", notice.getContent());
+			noticeObj.put("owner", notice.getOwner());
+			noticeObj.put("issued_on", "Today");
+
+			noticeObj.put("path", notice.getPath());
+			noticesArray.put(noticeObj);
+		}
+
+		response.put("notice", noticesArray);
+		return response;
+	}
 }
+
+
+
 
 
