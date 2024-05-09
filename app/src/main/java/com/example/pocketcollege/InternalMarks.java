@@ -1,6 +1,8 @@
 package com.example.pocketcollege;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Handler;
 
 
@@ -28,6 +30,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
+import com.example.pocketcollege.Response.Internal;
+
 public class InternalMarks extends Activity {
 
 
@@ -40,6 +44,7 @@ public class InternalMarks extends Activity {
 	int total = 0;
 	private String firstmid;
 	private int total123;
+	private Spinner dropdown;
 
 
 	@Override
@@ -50,14 +55,13 @@ public class InternalMarks extends Activity {
 		setContentView(R.layout.internalmarks);
 		AverageCount= (TextView) findViewById(R.id.numnercount);
 
-		Spinner dropdown = (Spinner) findViewById(R.id.subject);
+		 dropdown = (Spinner) findViewById(R.id.subject);
 		GlobalVariables newObj = (GlobalVariables) getApplication();
 		setInternalMarks(newObj);
 		String[] items = newObj.getUserSubjects();
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, items);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		dropdown.setAdapter(adapter);
+		BackgroundTask backgroundTask = new BackgroundTask();
+		backgroundTask.execute();
+
 
 		AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() 
 		{
@@ -67,7 +71,7 @@ public class InternalMarks extends Activity {
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 
-				String subject_pos = String.valueOf(arg2);
+				String subjectName = dropdown.getSelectedItem().toString();
 
 
 				String[] Loginvalues = { "",""};
@@ -75,7 +79,7 @@ public class InternalMarks extends Activity {
 
 					int counter = 0;
 					int total = 0;
-					new GetIA().execute(Loginvalues);
+					new GetIA(subjectName).execute(subjectName);
 
 
 			}
@@ -93,6 +97,14 @@ public class InternalMarks extends Activity {
 		//ViewGroup view = (ViewGroup) findViewById(R.id.banner);
 		//view.addView(banner);
 		//revmob.showFullscreen(this);
+	}
+
+	private List<String> createThreadTogetSubjects(Spinner dropdown ) {
+		List<String> subjectNames = new ArrayList<String>();
+		NoticeDatabase database = NoticeDatabase.getDatabase(getApplicationContext());
+		InternalDao internalDao = database.internalDao();
+		subjectNames = internalDao.getAllSubjectNames();
+		return subjectNames;
 	}
 
 	private void setInternalMarks(GlobalVariables newObj) {
@@ -277,12 +289,20 @@ public class InternalMarks extends Activity {
 	}
 
 
-	public class GetIA extends AsyncTask<String, Integer, JSONObject> {
+	public class GetIA extends AsyncTask<String, Integer, Internal> {
 
 
+		private final String subjectName;
 		JSONObject json = null;
 
 		ProgressDialog progressDialog = new ProgressDialog(context);
+		private Internal internalMarks;
+
+		public GetIA(String subjectName) {
+			// TODO Auto-generated constructor stub
+			this.subjectName = subjectName;
+
+		}
 
 		@Override
 		protected void onPreExecute() {
@@ -295,22 +315,27 @@ public class InternalMarks extends Activity {
 		}
 
 		@Override
-		protected JSONObject doInBackground(String... params) {
+		protected Internal doInBackground(String... params) {
 			// TODO Auto-generated method stub
 
 
 			try {
+
+				NoticeDatabase database = NoticeDatabase.getDatabase(getApplicationContext());
+				InternalDao internalDao = database.internalDao();
+				internalMarks = internalDao.getInternalByStudentNameAndSubjectName(subjectName);
+
 
 				json = getIA();
 			}  catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return json;
+			return internalMarks;
 		}
 
 		@Override
-		protected void onPostExecute(JSONObject result) {
+		protected void onPostExecute(Internal result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			progressDialog.dismiss();
@@ -319,37 +344,20 @@ public class InternalMarks extends Activity {
 				newObj.alertDialog(context);
 			} else {
 				try {
-					String status = result.getString("status");
-					if (status.equals("error")) {
 
-						System.out.println("Avaiunsh"+status);
-					} else {
-						System.out.println(status);
-						JSONArray iaMarks = result.getJSONArray("ia_marks");
-						JSONObject period;
-						period = iaMarks.getJSONObject(0);
 
-					//	String average = result.getString("average");
-					//	String averageRound = round(average);
-
-						String firstmid = period.getString("firstmid");
+						String firstmid = Integer.toString(internalMarks.getMidOneMarks());
 						String firstmidRound = round(firstmid);
-						String secondmid = period.getString("secondmid");
-						System.out.println("9999999999999999"+secondmid);
-						String average = period.getString("average");
+						String secondmid = Integer.toString(internalMarks.getMidTwoMarks());
+						String average = Integer.toString(internalMarks.getMidTwoMarks());
 						String averageround = round(average);
 						String secondmidRound = round(secondmid);
 						String[] iaMarkss={firstmidRound,secondmidRound};
 						int[] iaMarks123 = new int[30];
-					//	float f1 = Float.parseFloat(iaMarkss[0]);
-					//	float f2 = Float.parseFloat(iaMarkss[1]);
-					//	int firstmindround = Math.round(f1);
-					//	int secoundmindround = Math.round(f2);
-						//int[] iaMarksfuck = {firstmindround, secoundmindround};
-					//	String[] iaMarks={firstmid,"23"};
+
 						init(iaMarkss,averageround);
-					}
-				} catch (JSONException e) {
+
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -407,5 +415,37 @@ public class InternalMarks extends Activity {
 		}
 
 	}
+
+	public class BackgroundTask extends AsyncTask<Void, Void, List<String>> {
+
+
+
+		public BackgroundTask() {
+
+		}
+
+		@Override
+		protected List<String> doInBackground(Void... voids) {
+			// Perform your background task here and return the List<String>
+			List<String> subjectNames = createThreadTogetSubjects(dropdown);
+
+			return subjectNames;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> stringList) {
+			super.onPostExecute(stringList);
+		//	update to spinner
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+                    android.R.layout.simple_spinner_item, stringList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dropdown.setAdapter(adapter);
+
+		}
+
+
+	}
+
+
 
 }

@@ -58,18 +58,12 @@ public class StudentLogin extends FragmentActivity {
 				EditText password_main = (EditText) findViewById(R.id.user_pass);
 				String username = usr_number.getText().toString();
 				String password = password_main.getText().toString();
-				String[] Loginvalues = { "admin", "admin" };
-				if (username.trim().equals("student") && password.trim().equals("student")) {
-
+				String getUserNamefromSharedPreferences = sharedPreferences.getString("s_username", "");
+				String getPasswordfromSharedPreferences = sharedPreferences.getString("s_password", "");
+				if (getUserNamefromSharedPreferences.equals(username) && getPasswordfromSharedPreferences.equals(password)) {
 					startActivity(new Intent(StudentLogin.this, Welcome_Screen.class));
-
 				}
-				if (username.trim().equals("faculty") && password.trim().equals("faculty")) {
-
-					startActivity(new Intent(StudentLogin.this, Welcome_Screen.class));
-
-				}
-				{
+				else {
 					Toast.makeText(StudentLogin.this, "UserID and Password requested", Toast.LENGTH_SHORT).show();
 				}
 			}

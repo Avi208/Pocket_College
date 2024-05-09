@@ -6,10 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Notice.class}, version = 1)
+import com.example.pocketcollege.Response.Internal;
+
+@Database(entities = {Notice.class, Internal.class }, version = 1)
 public abstract class NoticeDatabase extends RoomDatabase {
 
     public abstract NoticeDao noticeDao();
+    public abstract InternalDao internalDao();
 
     public static final String DATABASE_NAME = "notice_database";
 

@@ -77,7 +77,7 @@ public class TeacherLogin extends FragmentActivity {
 				}else if (getSharedPreferencesUsername.isEmpty() && getSharedPreferencesPassword.isEmpty()){
 					 Toast.makeText(TeacherLogin.this, "Login Failed Please Create new Credentials.", Toast.LENGTH_SHORT).show();
 				 }
-				{
+				else{
 					Toast.makeText(TeacherLogin.this, "UserID and Password Invalid", Toast.LENGTH_SHORT).show();
 				}
 			}
